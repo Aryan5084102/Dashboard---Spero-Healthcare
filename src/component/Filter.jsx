@@ -4,9 +4,9 @@ const Filter = ({ onFilterChange }) => {
   const filterOptions = ["Today", "This Month", "Last Month"];
 
   return (
-    <div className="flex items-center justify-between mb-3 mx-2 bg-blue-400 p-4 rounded-md">
+    <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-3 mx-2 bg-blue-400 p-4 rounded-md space-y-4 sm:space-y-0 sm:space-x-4">
       {/* Filter Buttons */}
-      <div className="flex space-x-4">
+      <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
         {filterOptions.map((filter, index) => (
           <button
             key={index}
@@ -21,7 +21,7 @@ const Filter = ({ onFilterChange }) => {
       {/* Dropdown */}
       <div>
         <select
-          className="w-64 px-4 py-2 bg-white border border-gray-300 rounded-md shadow-sm text-gray-700 focus:ring-2 focus:ring-blue-300 focus:outline-none"
+          className="w-full sm:w-64 px-4 py-2 bg-white border border-gray-300 rounded-md shadow-sm text-gray-700 focus:ring-2 focus:ring-blue-300 focus:outline-none"
           onChange={(e) => onFilterChange(e.target.value)}
         >
           <option value="all">Select Hospital</option>

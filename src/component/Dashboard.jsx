@@ -79,37 +79,71 @@ const Dashboard = () => {
       <Header />
       <Filter onFilterChange={handleFilterChange} />
 
-      {/* Info Cards */}
-      <div className="flex justify-between mx-2 gap-4">
-        <div className="w-2/3 flex justify-between mb-8 bg-white border rounded-md p-4">
-          <InfoCard title="Total Enquiry" value={filteredServicesData?.totalEnquiry || 5} bgColor="bg-purple-600" />
-          <InfoCard title="Converted" value={filteredServicesData?.converted || 2} bgColor="bg-red-600" />
-          <InfoCard title="In Follow Up" value={filteredServicesData?.inFollowUp || 2} bgColor="bg-teal-500" />
-          <InfoCard title="Cancelled" value={filteredServicesData?.cancelled || 0} bgColor="bg-green-600" />
-          <InfoCard title="Pending" value={filteredServicesData?.pending || 1} bgColor="bg-blue-600" />
+      <div className="flex flex-col sm:flex-row justify-between mx-2 gap-4">
+        {/* InfoCard Section */}
+        <div className="w-full sm:w-2/3 flex flex-wrap justify-between mb-8 bg-white border rounded-md p-4 gap-y-4">
+          <InfoCard
+            title="Total Enquiry"
+            value={filteredServicesData?.totalEnquiry || 5}
+            bgColor="bg-purple-600"
+            className="w-full sm:w-[48%]"
+          />
+          <InfoCard
+            title="Converted"
+            value={filteredServicesData?.converted || 2}
+            bgColor="bg-red-600"
+            className="w-full sm:w-[48%]"
+          />
+          <InfoCard
+            title="In Follow Up"
+            value={filteredServicesData?.inFollowUp || 2}
+            bgColor="bg-teal-500"
+            className="w-full sm:w-[48%]"
+          />
+          <InfoCard
+            title="Cancelled"
+            value={filteredServicesData?.cancelled || 0}
+            bgColor="bg-green-600"
+            className="w-full sm:w-[48%]"
+          />
+          <InfoCard
+            title="Pending"
+            value={filteredServicesData?.pending || 1}
+            bgColor="bg-blue-600"
+            className="w-full sm:w-[48%]"
+          />
         </div>
-        <PaymentCollected />
+
+        {/* PaymentCollected Section */}
+        <div className="w-full sm:w-1/3">
+          <PaymentCollected />
+        </div>
       </div>
 
-      {/* Main Content */}
-      <div className="flex mx-2 gap-4 justify-between">
-        <div className="w-1/3">
+      <div className="flex flex-col sm:flex-row mx-2 gap-4 justify-between">
+        {/* Service Details Section */}
+        <div className="w-full sm:w-1/3">
           <ServiceDetails services={filteredServicesData?.services || []} />
         </div>
-        <div className="mb-5 w-1/3">
+
+        {/* Total Services Chart Section */}
+        <div className="w-full sm:w-1/3">
           <TotalServicesChart
             completed={filteredServicesData?.completed || 0}
             ongoing={filteredServicesData?.ongoing || 0}
             pending={filteredServicesData?.pending || 0}
           />
         </div>
-        <div className="mt-3 w-1/3">
+
+        {/* Professional Availability Section */}
+        <div className="w-full sm:w-1/3">
           <ProfessionalAvailability
             assigned={professionalCountData?.assigned || 0}
             unassigned={professionalCountData?.unassigned || 0}
           />
         </div>
       </div>
+
     </div>
   );
 };
